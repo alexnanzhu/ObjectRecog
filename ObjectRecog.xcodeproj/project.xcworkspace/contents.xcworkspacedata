@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SeeFood.xcodeproj">
+      location = "self:/Users/alexz/Desktop/App Development/SeeFood/ObjectRecog.xcodeproj">
    </FileRef>
 </Workspace>
