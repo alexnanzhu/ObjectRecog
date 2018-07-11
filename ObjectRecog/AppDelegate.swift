@@ -41,6 +41,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        
+        completionHandler( handleShortcut(shortcutItem: shortcutItem) )
+    }
+    
+    
+    func handleShortcut(shortcutItem: UIApplicationShortcutItem) -> Bool {
+        var succeeded = false
+        
+        if shortcutItem.type == "takePicture" {
 
+
+
+            let alertController = window?.rootViewController as! UINavigationController
+            let nc = alertController.topViewController as! ViewController
+            nc.imagePicker.sourceType = .camera
+            alertController.present(nc.imagePicker, animated: true) {
+                succeeded = true
+            }
+            
+        }
+        
+        return succeeded
+    }
 }
 

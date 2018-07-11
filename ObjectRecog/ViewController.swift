@@ -14,6 +14,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     let imagePicker = UIImagePickerController()
 
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
@@ -21,8 +22,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
-        //false now
-        imagePicker.allowsEditing = false
+        imagePicker.allowsEditing = true
         
     }
     
@@ -49,7 +49,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             guard let results = request.results as? [VNClassificationObservation] else {
                 fatalError("model failed to process image")
             }
-            print(results.first)
+            self.navigationItem.title = results.first?.identifier
             
         }
         
