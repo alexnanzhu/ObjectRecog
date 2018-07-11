@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         completionHandler( handleShortcut(shortcutItem: shortcutItem) )
     }
     
-    
+    // Implement 3D Touch fuctionality
     func handleShortcut(shortcutItem: UIApplicationShortcutItem) -> Bool {
         var succeeded = false
         
