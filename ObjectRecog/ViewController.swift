@@ -22,7 +22,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
         imagePicker.allowsEditing = true
         
     }
@@ -55,6 +54,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 fatalError("model failed to process image")
             }
             self.navigationItem.title = results.first?.identifier
+            print(results)
             
         }
         
@@ -68,6 +68,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
+        imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
     }
     
