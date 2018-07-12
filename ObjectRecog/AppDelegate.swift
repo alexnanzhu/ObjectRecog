@@ -50,19 +50,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func handleShortcut(shortcutItem: UIApplicationShortcutItem) -> Bool {
         var succeeded = false
         
+        let alertController = window?.rootViewController as! UINavigationController
+        let nc = alertController.topViewController as! ViewController
+        
+        
         if shortcutItem.type == "takePicture" {
 
-
-
-            let alertController = window?.rootViewController as! UINavigationController
-            let nc = alertController.topViewController as! ViewController
             nc.imagePicker.sourceType = .camera
             alertController.present(nc.imagePicker, animated: true) {
                 succeeded = true
             }
             
-        }
+        } else if shortcutItem.type == "photoLibrary" {
+            
+            nc.imagePicker.sourceType = .photoLibrary
+            alertController.present(nc.imagePicker, animated: true) {
+                succeeded = true
+            }
         
+        }
         return succeeded
     }
 }
