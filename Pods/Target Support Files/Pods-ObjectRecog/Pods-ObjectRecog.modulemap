@@ -1,0 +1,6 @@
+framework module Pods_ObjectRecog {
+  umbrella header "Pods-ObjectRecog-umbrella.h"
+
+  export *
+  module * { export * }
+}

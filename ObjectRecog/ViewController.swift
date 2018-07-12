@@ -9,6 +9,7 @@
 import UIKit
 import CoreML
 import Vision
+import PKHUD
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -31,10 +32,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             fatalError()
         }
         imageView.image = userPickedImage
-        guard let ciImage = CIImage(image: userPickedImage) else { fatalError("couldnt convert") }
         
-        
-        detect(image: ciImage)
+        HUD.show(.progress)
+
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            guard let ciImage = CIImage(image: userPickedImage) else { fatalError("couldnt convert") }
+            self.detect(image: ciImage)
+            HUD.flash(.success, delay: 1.0)
+        }
         imagePicker.dismiss(animated: true, completion: nil)
         
     }
