@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
@@ -53,22 +52,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let alertController = window?.rootViewController as! UINavigationController
         let nc = alertController.topViewController as! ViewController
         
-        
         if shortcutItem.type == "takePicture" {
-
             nc.imagePicker.sourceType = .camera
-            alertController.present(nc.imagePicker, animated: true) {
-                succeeded = true
-            }
-            
         } else if shortcutItem.type == "photoLibrary" {
-            
             nc.imagePicker.sourceType = .photoLibrary
-            alertController.present(nc.imagePicker, animated: true) {
-                succeeded = true
-            }
-        
         }
+        
+        alertController.present(nc.imagePicker, animated: true) {
+            succeeded = true
+        }
+        
         return succeeded
     }
 }
