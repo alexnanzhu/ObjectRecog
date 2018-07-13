@@ -10,13 +10,18 @@ import UIKit
 import CoreML
 import Vision
 import PKHUD
+import ROGoogleTranslate
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let imagePicker = UIImagePickerController()
-
+    
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
+    
+    //MARK: - Translate part
+    var jieguo = "test"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +37,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         imageView.image = userPickedImage
         
-        HUD.show(.progress)
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             guard let ciImage = CIImage(image: userPickedImage) else { fatalError("couldnt convert") }
-            self.detect(image: ciImage)
-            HUD.flash(.success, delay: 1.0)
+            let word = self.detect(image: ciImage)
+            let params = ROGoogleTranslateParams(source: "en",
+                                                 target: "zh-CN",
+                                                 text: word)
+            
+            let translator = ROGoogleTranslate()
+            HUD.show(.progress)
+            
+            translator.translate(params: params) { (result) in
+                print("Translation: \(result)")
+                self.navigationItem.title = result
+//                HUD.show(.success)
+                HUD.hide()
+
+            }
         }
+        
+        
         imagePicker.dismiss(animated: true, completion: nil)
         
     }
     
-    func detect(image: CIImage) {
+    func detect(image: CIImage) -> String {
         
         guard let model = try? VNCoreMLModel(for: Inceptionv3().model) else {
             fatalError("loading coreml model failed")
@@ -53,8 +72,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             guard let results = request.results as? [VNClassificationObservation] else {
                 fatalError("model failed to process image")
             }
-            self.navigationItem.title = results.first?.identifier
-            print(results)
+            
+            self.jieguo = results.first!.identifier
             
         }
         
@@ -65,6 +84,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             print("handler error \(error)")
         }
         
+        return jieguo
+        
     }
     
     @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
@@ -73,5 +94,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
 
+    
+    
 }
+
+
 
