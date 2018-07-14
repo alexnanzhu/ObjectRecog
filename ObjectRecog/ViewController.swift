@@ -36,26 +36,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             fatalError()
         }
         imageView.image = userPickedImage
+        self.navigationItem.title = "Recognizing... 识别中 🔍"
+        HUD.show(.progress)
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            guard let ciImage = CIImage(image: userPickedImage) else { fatalError("couldnt convert") }
-            let word = self.detect(image: ciImage)
-            let params = ROGoogleTranslateParams(source: "en",
-                                                 target: "zh-CN",
-                                                 text: word)
-            
-            let translator = ROGoogleTranslate()
-            HUD.show(.progress)
-            
-            translator.translate(params: params) { (result) in
-                print("Translation: \(result)")
-                self.navigationItem.title = result
-//                HUD.show(.success)
-                HUD.hide()
-
-            }
+        guard let ciImage = CIImage(image: userPickedImage) else { fatalError("couldnt convert") }
+        let word = self.detect(image: ciImage)
+        let params = ROGoogleTranslateParams(source: "en",
+                                             target: "zh-CN",
+                                             text: word)
+        
+        
+        let translator = ROGoogleTranslate()
+        translator.translate(params: params) { (result) in
+            print("Translation: \(result)")
+            self.navigationItem.title = result
+            HUD.hide()
         }
+        
         
         
         imagePicker.dismiss(animated: true, completion: nil)
@@ -91,10 +89,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
         imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
+        
     }
-    
 
-    
     
 }
 
