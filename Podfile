@@ -7,4 +7,5 @@ target 'ObjectRecog' do
 
   # Pods for ObjectRecog
     pod 'PKHUD', '~> 5.0'
+    pod 'ROGoogleTranslate'
 end

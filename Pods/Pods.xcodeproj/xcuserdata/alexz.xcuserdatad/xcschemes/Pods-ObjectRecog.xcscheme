@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C73C11EE326AC2915248ED2CB6B54BC7"
+               BlueprintIdentifier = "9F33293CB007A226D7A976083BC6B2FB"
                BuildableName = "Pods_ObjectRecog.framework"
                BlueprintName = "Pods-ObjectRecog"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C73C11EE326AC2915248ED2CB6B54BC7"
+            BlueprintIdentifier = "9F33293CB007A226D7A976083BC6B2FB"
             BuildableName = "Pods_ObjectRecog.framework"
             BlueprintName = "Pods-ObjectRecog"
             ReferencedContainer = "container:Pods.xcodeproj">

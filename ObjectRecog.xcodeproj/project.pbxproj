@@ -13,6 +13,8 @@
 		6B0D085120F4FEE00002E930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B0D085020F4FEE00002E930 /* Assets.xcassets */; };
 		6B0D085420F4FEE00002E930 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0D085220F4FEE00002E930 /* LaunchScreen.storyboard */; };
 		6B0D085C20F4FF370002E930 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D085B20F4FF370002E930 /* Inceptionv3.mlmodel */; };
+		6BB93C24210E5962006C4A59 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BB93C23210E5962006C4A59 /* Settings.bundle */; };
+		6BB93C26210E64F8006C4A59 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB93C25210E64F8006C4A59 /* Model.swift */; };
 		6D08225287DA05C6ECE592E1 /* Pods_ObjectRecog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0948F458CCFDF853B89FA4 /* Pods_ObjectRecog.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		6B0D085320F4FEE00002E930 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B0D085520F4FEE00002E930 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B0D085B20F4FF370002E930 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
+		6BB93C23210E5962006C4A59 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		6BB93C25210E64F8006C4A59 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		E89F7DC09BE9FEB2F8A40379 /* Pods-ObjectRecog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectRecog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObjectRecog/Pods-ObjectRecog.debug.xcconfig"; sourceTree = "<group>"; };
 		EC0948F458CCFDF853B89FA4 /* Pods_ObjectRecog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObjectRecog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F628066A50B070DEE6D5D75B /* Pods-ObjectRecog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectRecog.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObjectRecog/Pods-ObjectRecog.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,12 +76,14 @@
 			isa = PBXGroup;
 			children = (
 				6B0D084920F4FEDE0002E930 /* AppDelegate.swift */,
+				6BB93C25210E64F8006C4A59 /* Model.swift */,
 				6B0D084B20F4FEDE0002E930 /* ViewController.swift */,
 				6B0D084D20F4FEDE0002E930 /* Main.storyboard */,
 				6B0D085020F4FEE00002E930 /* Assets.xcassets */,
 				6B0D085220F4FEE00002E930 /* LaunchScreen.storyboard */,
 				6B0D085520F4FEE00002E930 /* Info.plist */,
 				6B0D085B20F4FF370002E930 /* Inceptionv3.mlmodel */,
+				6BB93C23210E5962006C4A59 /* Settings.bundle */,
 			);
 			path = ObjectRecog;
 			sourceTree = "<group>";
@@ -151,6 +157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BB93C24210E5962006C4A59 /* Settings.bundle in Resources */,
 				6B0D085420F4FEE00002E930 /* LaunchScreen.storyboard in Resources */,
 				6B0D085120F4FEE00002E930 /* Assets.xcassets in Resources */,
 				6B0D084F20F4FEDE0002E930 /* Main.storyboard in Resources */,
@@ -208,6 +215,7 @@
 				6B0D084C20F4FEDE0002E930 /* ViewController.swift in Sources */,
 				6B0D085C20F4FF370002E930 /* Inceptionv3.mlmodel in Sources */,
 				6B0D084A20F4FEDE0002E930 /* AppDelegate.swift in Sources */,
+				6BB93C26210E64F8006C4A59 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

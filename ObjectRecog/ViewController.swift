@@ -28,7 +28,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -42,18 +41,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         guard let ciImage = CIImage(image: userPickedImage) else { fatalError("couldnt convert") }
         let word = self.detect(image: ciImage)
-        let params = ROGoogleTranslateParams(source: "en",
-                                             target: "zh-CN",
-                                             text: word)
         
         
-        let translator = ROGoogleTranslate()
-        translator.translate(params: params) { (result) in
-            print("Translation: \(result)")
-            self.navigationItem.title = result
+        let num = UserDefaults.standard.integer(forKey: "language_preference")
+        let targetLanguage = ["en", "fr", "ja", "zh-CN"]
+        let tar = targetLanguage[num]
+        print(num, tar)
+        
+        if tar == "en" {
+            self.navigationItem.title = word
             HUD.hide()
+        } else {
+            let params = ROGoogleTranslateParams(source: "en",
+                                                 target: tar,
+                                                 text: word)
+            
+            
+            let translator = ROGoogleTranslate()
+            translator.translate(params: params) { (result) in
+                print("Translation: \(result)")
+                self.navigationItem.title = result
+                HUD.hide()
+            }
         }
-        
         
         
         imagePicker.dismiss(animated: true, completion: nil)
