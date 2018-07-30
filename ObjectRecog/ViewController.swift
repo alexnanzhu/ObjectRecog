@@ -45,8 +45,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let num = UserDefaults.standard.integer(forKey: "language_preference")
         let targetLanguage = ["en", "fr", "ja", "zh-CN"]
-        let tar = targetLanguage[num]
+        var tar = targetLanguage[num]
         print(num, tar)
+        
+        if Reachability.isConnectedToNetwork() {
+            print("Internet Connection Available!")
+        } else {
+            print("Internet Connection not Available!")
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "No Internet Connection", message: "The result is shown in English.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            tar = "en"
+        }
         
         if tar == "en" {
             self.navigationItem.title = word
